@@ -6,9 +6,10 @@ import {
   TextInput,
   View,
   Button,
+  Image
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Header from "../components/Header";
@@ -24,6 +25,7 @@ import {
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedDates, setSelectedDates] = useState();
+  const route=useRoute();
   const [rooms, SetRooms] = useState(1);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
@@ -85,6 +87,7 @@ const HomeScreen = () => {
           >
             {/* Destinations */}
             <Pressable
+            onPress={()=> navigation.navigate("Search")}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
@@ -96,10 +99,11 @@ const HomeScreen = () => {
               }}
             >
               <AntDesign name="search1" size={24} color="black" />
-              <TextInput
-                placeholderTextColor="black"
-                placeholder="Enter your destination"
-              />
+              <Text
+               style={{color:'black'}}
+              >
+                {route?.params?route.params.input : "Enter Your Destinations"}
+              </Text>
             </Pressable>
             {/* Select Dates */}
             <Pressable
@@ -132,6 +136,7 @@ const HomeScreen = () => {
                   headerStyle: {
                     backgroundColor: "#003580",
                   },
+
                   contentText: {
                     fontSize: 15,
                     flexDirection: "row",
@@ -141,7 +146,7 @@ const HomeScreen = () => {
                 }}
                 selectedBgColor="#0047AB"
                 allowFontScaling={false}
-                placeholder={"Apr 27, 2018 → Jul 10, 2018"}
+                placeholder={"Select Your Dates"}
                 mode={"range"}
                 customButton={(onConfirm) => customButton(onConfirm)}
                 onConfirm={(startDate, endDate) => {
@@ -163,8 +168,7 @@ const HomeScreen = () => {
               }}
             >
               <Ionicons name="person-outline" size={24} color="black" />
-              <Text style={{color:"red"}}
-              >
+              <Text style={{ color: "red" }}>
                 {`${rooms} Room | ${adults} Adults | ${children} Children`}
               </Text>
             </Pressable>
@@ -190,8 +194,100 @@ const HomeScreen = () => {
               </Text>
             </Pressable>
           </View>
+
+          <Text
+            style={{
+              marginHorizontal: 25,
+              fontSize: 17,
+              fontWeight: "500",
+            }}
+          >
+            Travel More and Spend Less
+          </Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <Pressable
+              style={{
+                width: 200,
+                height: 150,
+                marginTop: 10,
+                backgroundColor: "#003580",
+                borderRadius: 10,
+                padding: 20,
+                marginHorizontal: 10,
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 15,
+                  fontWeight: "bold",
+                  marginVertical: 7,
+                }}
+              >
+                Genius
+              </Text>
+              <Text style={{ color: "white", fontSize: 15, fontWeight: "500" }}>
+                You are ate genius level one in our loyalty program
+              </Text>
+            </Pressable>
+
+            <Pressable
+              style={{
+                width: 200,
+                height: 150,
+                marginTop: 10,
+                borderColor: "#E0E0E0",
+                borderWidth: 2,
+                borderRadius: 10,
+                padding: 20,
+                marginHorizontal: 20,
+              }}
+            >
+              <Text
+                style={{ fontSize: 15, fontWeight: "bold", marginVertical: 7 }}
+              >
+                15% Discount
+              </Text>
+              <Text style={{ fontSize: 15, fontWeight: "500" }}>
+                Complete 5 stays to unlock level 2
+              </Text>
+            </Pressable>
+
+            <Pressable
+              style={{
+                width: 200,
+                height: 150,
+                marginTop: 10,
+                borderWidth: 2,
+                borderColor: "#E0E0E0",
+                borderRadius: 10,
+                padding: 20,
+                marginHorizontal: 20,
+              }}
+            >
+              <Text
+                style={{ fontSize: 15, fontWeight: "bold", marginVertical: 7 }}
+              >
+                10% Discount
+              </Text>
+              <Text style={{ fontSize: 15, fontWeight: "500" }}>
+                Enjoy Discount at participating at properties worldwide
+              </Text>
+            </Pressable>
+          </ScrollView>
+
+            <Pressable style={{
+                marginTop:40,
+                justifyContent:'center',
+                alignItems:'center'
+            }}>
+                <Image style = {{width:200, height:50, resizeMode:'cover'}} 
+                source={{uri:"https://assets.stickpng.com/thumbs/5a32a821cb9a85480a628f8f.png"}}/>
+            </Pressable>
+
         </ScrollView>
       </View>
+
       <BottomModal
         swipeThreshold={200}
         onBackdropPress={() => {
@@ -252,7 +348,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>SetRooms(Math.max(1, rooms-1))}
+                onPress={() => SetRooms(Math.max(1, rooms - 1))}
               >
                 <Text
                   style={{
@@ -285,7 +381,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>SetRooms((e)=>e+1)}
+                onPress={() => SetRooms((e) => e + 1)}
               >
                 <Text
                   style={{
@@ -333,7 +429,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>setAdults(Math.max(1, adults-1))}
+                onPress={() => setAdults(Math.max(1, adults - 1))}
               >
                 <Text
                   style={{
@@ -366,7 +462,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>setAdults((e)=>e+1)}
+                onPress={() => setAdults((e) => e + 1)}
               >
                 <Text
                   style={{
@@ -414,7 +510,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>setChildren(Math.max(0,children-1))}
+                onPress={() => setChildren(Math.max(0, children - 1))}
               >
                 <Text
                   style={{
@@ -447,7 +543,7 @@ const HomeScreen = () => {
                   borderColor: "#BEBEBE",
                   backgroundColor: "#E0E0E0",
                 }}
-                onPress={()=>setChildren((e)=>e+1)}
+                onPress={() => setChildren((e) => e + 1)}
               >
                 <Text
                   style={{

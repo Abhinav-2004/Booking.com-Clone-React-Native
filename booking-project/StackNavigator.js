@@ -11,6 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ProfileScreen from "./screens/ProfileScreen";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { NavigationContainer } from "@react-navigation/native";
+import SearchScreen from "./screens/SearchScreen";
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -85,6 +86,9 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}} />
+
+        <Stack.Screen name="Search" component={SearchScreen} options={{headerShown:false}} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
