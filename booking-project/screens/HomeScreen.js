@@ -6,7 +6,8 @@ import {
   TextInput,
   View,
   Button,
-  Image
+  Image,
+  Alert
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -72,6 +73,27 @@ const HomeScreen = () => {
     );
   };
 
+  const searchPlaces=()=>{
+    if(route.params===undefined || !selectedDates){
+        Alert.alert('Invalid Details', 'Please enter all the details', [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ]);
+    }
+    if(route.params && selectedDates){
+        navigation.navigate("Places",{
+            rooms:rooms,
+            adults:adults,
+            children:children,
+            selectedDates:selectedDates,
+            place:route.params.input
+        })
+    }
+  }
   return (
     <>
       <View>
@@ -174,6 +196,7 @@ const HomeScreen = () => {
             </Pressable>
             {/* Search Button */}
             <Pressable
+            onPress={()=>searchPlaces()}
               style={{
                 backgroundColor: "#003580",
                 paddingHorizontal: 10,
