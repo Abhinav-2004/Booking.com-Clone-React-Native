@@ -15,7 +15,7 @@ import Amenities from "../components/Amenities";
 const PropertyInfo = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  console.log(route.params);
+  //console.log(route.params);
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -148,7 +148,7 @@ const PropertyInfo = () => {
               textDecorationLine: "line-through",
             }}
           >
-            {route.params.oldPrice * route.params.adults}
+            Rs.{route.params.oldPrice * route.params.adults}
           </Text>
           <Text
             style={{
@@ -158,7 +158,7 @@ const PropertyInfo = () => {
               fontWeight: "700",
             }}
           >
-            {route.params.newPrice * route.params.adults}
+            Rs.{route.params.newPrice * route.params.adults}
           </Text>
         </View>
 
@@ -234,9 +234,45 @@ const PropertyInfo = () => {
           }}
         />
 
-        <Amenities/>
-
+        <Amenities />
+        <Text
+          style={{
+            borderColor: "#e0e0e0",
+            borderWidth: 3,
+            height: 1,
+            marginTop: 15,
+            marginBottom:30,
+          }}
+        />
       </ScrollView>
+      <Pressable
+      onPress={()=>navigation.navigate('Rooms', {
+        name:route.params.name,
+        rating:route.params.rating,
+        oldPrice:route.params.oldPrice,
+        newPrice:route.params.newPrice,
+        photos:route.params.photos,
+        adults:route.params.adults,
+        children:route.params.children,
+        startDate:route.params.selectedDates.startDate,
+        endDate:route.params.selectedDates.endDate,
+        rooms:route.params.availableRooms,
+        selectedRooms:route.params.rooms,
+      })}
+        style={{
+          backgroundColor: "#003580",
+          borderRadius:10,
+          position:'absolute',
+          bottom:10,
+          padding:15,
+          width:'95%',
+          marginHorizontal:10
+        }}
+      >
+        <Text style={{ textAlign: "center", color: "white" , fontWeight:'bold', fontSize:17}}>
+          Select Availability
+        </Text>
+      </Pressable>
     </SafeAreaView>
   );
 };

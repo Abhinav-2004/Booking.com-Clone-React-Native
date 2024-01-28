@@ -482,7 +482,7 @@ const PlacesScreen = () => {
   const [sortedData, setSortedData]=useState(data);
   const route = useRoute();
   const navigation = useNavigation();
-  console.log(route.params);
+  //console.log(route.params);
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,

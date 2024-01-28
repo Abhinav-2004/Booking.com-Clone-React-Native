@@ -28,11 +28,11 @@ const PropertyCard = ({
           oldPrice:property.oldPrice,
           newPrice:property.newPrice,
           photos:property.photos,
-          rooms:property.rooms,
+          availableRooms:property.rooms,
           adults:adults,
           children:children,
           rooms:rooms,
-          selectedDates:selectedDates
+          selectedDates:selectedDates,
         })}
         style={{ margin: 15, flexDirection: "row", backgroundColor: "white" , alignItems:'center'}}
       >
