@@ -500,7 +500,7 @@ const PlacesScreen = () => {
       }, []);
 
   return (
-    <View>
+    <ScrollView>
       <Pressable style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:20,
     padding:12,
     backgroundColor:'white'
@@ -544,7 +544,7 @@ const PlacesScreen = () => {
             )}
         </ScrollView>
 
-    </View>
+    </ScrollView>
   )
 }
 
