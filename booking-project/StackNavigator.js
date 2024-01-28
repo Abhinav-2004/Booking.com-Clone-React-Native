@@ -14,6 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SearchScreen from "./screens/SearchScreen";
 import PlacesScreen from "./components/PlacesScreen";
 import MapScreen from "./screens/MapScreen";
+import PropertyInfo from "./screens/PropertyInfo";
 
 
 const StackNavigator = () => {
@@ -95,6 +96,8 @@ const StackNavigator = () => {
         <Stack.Screen name="Places" component={PlacesScreen}  />
 
         <Stack.Screen name="Map" component={MapScreen} options={{headerShown:false}} />
+
+        <Stack.Screen name="Info" component={PropertyInfo} />
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const PropertyCard = ({
   rooms,
   children,
@@ -16,10 +17,23 @@ const PropertyCard = ({
   selectedDates,
   availableRooms,
 }) => {
+  const navigation=useNavigation();
   const { width, height } = Dimensions.get("window");
   return (
     <View>
       <Pressable
+        onPress={()=>navigation.navigate('Info', {
+          name:property.name,
+          rating:property.rating,
+          oldPrice:property.oldPrice,
+          newPrice:property.newPrice,
+          photos:property.photos,
+          rooms:property.rooms,
+          adults:adults,
+          children:children,
+          rooms:rooms,
+          selectedDates:selectedDates
+        })}
         style={{ margin: 15, flexDirection: "row", backgroundColor: "white" , alignItems:'center'}}
       >
         <View>
