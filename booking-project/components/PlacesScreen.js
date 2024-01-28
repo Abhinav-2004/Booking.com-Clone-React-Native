@@ -587,6 +587,7 @@ const PlacesScreen = () => {
             flexDirection: "row",
             alignItems: "center",
           }}
+          
         >
           <Ionicons name="filter" size={24} color="gray" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
@@ -599,6 +600,7 @@ const PlacesScreen = () => {
             flexDirection: "row",
             alignItems: "center",
           }}
+          onPress={()=>navigation.navigate('Map', {searchPlaces:searchPlaces})}
         >
           <FontAwesome5 name="map-marker" size={22} color="gray" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
@@ -635,14 +637,18 @@ const PlacesScreen = () => {
             <Pressable
             onPress={()=>applyFilter((selectedFilter))}
               style={{
-                paddingRight: 10,
+                paddingHorizontal: 30,
+                paddingVertical:10,
                 marginLeft: "auto",
                 marginRight: "auto",
                 marginVertical: "10",
                 marginBottom:30,
+                backgroundColor:'#003580',
+                borderColor:'transparent',
+                borderWidth:0,
               }}
             >
-              <Text>Apply</Text>
+              <Text style={{color:'white', fontWeight:'600'}}>Apply</Text>
             </Pressable>
           </ModalFooter>
         }
@@ -661,9 +667,10 @@ const PlacesScreen = () => {
                 height: 200,
                 borderRightWidth: 1,
                 borderColor: "#E0E0E0",
+                marginTop:40
               }}
             >
-              <Text style={{ textAlign: "center" }}>Sort</Text>
+              <Text style={{fontSize:16, fontWeight:'500', textAlign: "center" }}>Sort By</Text>
             </View>
             <View style={{ flex: 3, margin: 10 }}>
               {filters.map((item, index) => (
