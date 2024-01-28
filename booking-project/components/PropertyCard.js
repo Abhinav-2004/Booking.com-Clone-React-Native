@@ -20,7 +20,7 @@ const PropertyCard = ({
   return (
     <View>
       <Pressable
-        style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
+        style={{ margin: 15, flexDirection: "row", backgroundColor: "white" , alignItems:'center'}}
       >
         <View>
           <Image
@@ -79,7 +79,7 @@ const PropertyCard = ({
                 padding:3,
                 borderRadius: 5,
                 width: 120,
-                marginTop:5
+                marginTop:5,
               }}>
                 <Text style={{textAlign:'center', color:'white', fontSize:14}}>
                     Limited Time Deal
